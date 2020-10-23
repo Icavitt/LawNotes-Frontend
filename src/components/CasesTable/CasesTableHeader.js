@@ -5,14 +5,14 @@ import TableRow from '@material-ui/core/TableRow';
 import TableSortLabel from '@material-ui/core/TableSortLabel';
 
 const headCells = [
-  { id: 'client', type: 'string', disablePadding: true, label: 'Client' },
+  { id: 'client', type: 'string', disablePadding: false, label: 'Client' },
   { id: 'opposingParty', type: 'string', disablePadding: false, label: 'Opposing Party' },
   { id: 'issue', type: 'string', disablePadding: false, label: 'Issue' },
   { id: 'caseNumber', type: 'string', disablePadding: false, label: 'Case Number' },
-  { id: 'lastActionTaken', type: 'string', disablePadding: false, label: 'Last Action Taken' },
+  { id: 'lastActionTaken', type: 'string', disablePadding: true, label: 'Last Action Taken' },
   { id: 'actionDate', type: 'date', disablePadding: false, label: 'Action Date' },
   { id: 'deadline', type: 'string', disablePadding: false, label: 'Deadline' },
-  { id: 'deadlineDue', type: 'date', disablePadding: false, label: 'DeadlineDue' },
+  { id: 'deadlineDue', type: 'date', disablePadding: true, label: 'DeadlineDue' },
 ];
 
 export default (props) => {
@@ -34,7 +34,7 @@ export default (props) => {
     {headCells.map((headCell) => (
         <TableCell
           key={headCell.id}
-          align={headCell.numeric ? 'right' : 'left'}
+          align={headCell.date ? 'left' : 'right'}
           padding={headCell.disablePadding ? 'none' : 'default'}
           sortDirection={orderBy === headCell.id ? order : false}
         >
@@ -42,6 +42,7 @@ export default (props) => {
             active={orderBy === headCell.id}
             direction={orderBy === headCell.id ? order : 'asc'}
             onClick={createSortHandler(headCell.id)}
+            align='left'
           >
             {headCell.label}
           </TableSortLabel>

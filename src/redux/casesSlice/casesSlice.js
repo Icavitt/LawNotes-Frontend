@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import cases from './testData';
 
-export const counterSlice = createSlice({
+export const casesSlice = createSlice({
   name: 'cases',
   initialState: cases,
   reducers: {
@@ -11,6 +11,7 @@ export const counterSlice = createSlice({
   },
 });
 
+export const { createCase } = casesSlice.actions;
 
 export const selectCaseRows = state => state.cases.map(x => {
   const lastActionTaken = x.actionHistory.slice()
@@ -35,4 +36,4 @@ export const selectCaseRows = state => state.cases.map(x => {
 } 
 );
 
-export default counterSlice.reducer;
+export default casesSlice.reducer;

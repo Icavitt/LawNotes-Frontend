@@ -7,7 +7,7 @@ import Paper from '@material-ui/core/Paper';
 
 import Header from './CasesTableHeader';
 import CasesBody from './CasesTableBody';
-
+import CasesTitleBar from './CasesTableTitleBar';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
@@ -28,18 +28,21 @@ export default function CasesTable() {
   const [order, setOrder] = React.useState('desc');
 
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-      <Header 
-        orderBy={orderBy}
-        setOrderBy={setOrderBy}
-        order={order}
-        setOrder={setOrder}/>
-       <CasesBody 
-        sort={stableSort}
-        comparator={getComparator(order, orderBy)}/>
-      </Table>
-    </TableContainer>
+    <div className = {classes.root} >
+      <CasesTitleBar />
+      <TableContainer component={Paper}>
+        <Table className={classes.table} aria-label="simple table">
+        <Header 
+          orderBy={orderBy}
+          setOrderBy={setOrderBy}
+          order={order}
+          setOrder={setOrder}/>
+        <CasesBody 
+          sort={stableSort}
+          comparator={getComparator(order, orderBy)}/>
+        </Table>
+      </TableContainer>
+    </div>
   );
 }
 
